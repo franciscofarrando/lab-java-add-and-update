@@ -46,7 +46,7 @@ public class PatientController {
     @ResponseStatus(HttpStatus.CREATED)
     public Patient createPatient(@RequestBody @Valid Patient patient){
         return patientRepository.save(patient);
-        //Preguntar a hector por que me pone admitted_by : null, SERA QUE HAY QUE PONERLO COMO EL CONSTRUCTOR?
+        //Preguntar a Hector por que me pone admitted_by : null, SERA QUE HAY QUE PONERLO COMO EL CONSTRUCTOR?
         // PERO AUN ASI NO ME LO TOMA
     }
 }

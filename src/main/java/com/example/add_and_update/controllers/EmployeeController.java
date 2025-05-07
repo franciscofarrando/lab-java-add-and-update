@@ -1,5 +1,6 @@
 package com.example.add_and_update.controllers;
 
+import com.example.add_and_update.dtos.EmployeePatchDTO;
 import com.example.add_and_update.models.Employee;
 import com.example.add_and_update.models.Patient;
 import com.example.add_and_update.models.Status;
@@ -8,6 +9,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -41,12 +43,26 @@ public class EmployeeController {
         return employeeRepository.findEmployeesByDepartment(department);
     }
 
-    // POST PUT & PATCH
+    // POST & PATCH
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Employee createEmployee(@RequestBody @Valid Employee employee){
         return employeeRepository.save(employee);
     }
+
+    @PatchMapping("/id/{employeeId}")
+    @ResponseStatus(HttpStatus.OK)
+    public Employee changeStatus(@PathVariable int employeeId, @RequestBody EmployeePatchDTO employeePatchDTO){
+        Employee existingEmployee = employeeRepository.findById(employeeId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        if(employeePatchDTO.getStatus() != null){
+            existingEmployee.setStatus(employeePatchDTO.getStatus());
+        }
+        if(employeePatchDTO.getDepartment() != null){
+            existingEmployee.setDepartment(employeePatchDTO.getDepartment());
+        }
+        return employeeRepository.save(existingEmployee);
+    }
+
 
 }
