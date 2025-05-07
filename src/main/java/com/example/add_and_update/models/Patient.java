@@ -1,4 +1,4 @@
-package com.example.intro_to_spring_boo.models;
+package com.example.add_and_update.models;
 
 import jakarta.persistence.*;
 

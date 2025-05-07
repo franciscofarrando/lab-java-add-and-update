@@ -1,8 +1,8 @@
-package com.example.intro_to_spring_boo.controllers;
+package com.example.add_and_update.controllers;
 
-import com.example.intro_to_spring_boo.models.Patient;
-import com.example.intro_to_spring_boo.models.Status;
-import com.example.intro_to_spring_boo.repositories.PatientRepository;
+import com.example.add_and_update.models.Patient;
+import com.example.add_and_update.models.Status;
+import com.example.add_and_update.repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
