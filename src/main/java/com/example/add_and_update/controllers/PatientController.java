@@ -39,5 +39,11 @@ public class PatientController {
         return patientRepository.findByAdmittedBy_Status(status);
     }
 
+    // POST PUT & PATCH
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Patient createPatient(@RequestBody Patient patient){
+        return patientRepository.save(patient);
+    }
 }

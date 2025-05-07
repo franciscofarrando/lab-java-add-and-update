@@ -1,14 +1,14 @@
-package com.example.intro_to_spring_boo;
+package com.example.add_and_update;
 
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class IntroToSpringBooApplication {
+public class AddAndUpdateApplication {
 	public static void main(String[] args) {
 
-		SpringApplication.run(IntroToSpringBooApplication.class, args);
+		SpringApplication.run(AddAndUpdateApplication.class, args);
 	}
 
 }
