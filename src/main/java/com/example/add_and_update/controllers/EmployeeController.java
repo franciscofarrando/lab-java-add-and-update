@@ -4,6 +4,7 @@ import com.example.add_and_update.models.Employee;
 import com.example.add_and_update.models.Patient;
 import com.example.add_and_update.models.Status;
 import com.example.add_and_update.repositories.EmployeeRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +39,14 @@ public class EmployeeController {
     @ResponseStatus(HttpStatus.OK)
     public List<Employee> getEmployeesByDepartment(@PathVariable(name ="department") String department) {
         return employeeRepository.findEmployeesByDepartment(department);
+    }
+
+    // POST PUT & PATCH
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Employee createEmployee(@RequestBody @Valid Employee employee){
+        return employeeRepository.save(employee);
     }
 
 }

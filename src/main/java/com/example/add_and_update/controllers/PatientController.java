@@ -3,6 +3,7 @@ package com.example.add_and_update.controllers;
 import com.example.add_and_update.models.Patient;
 import com.example.add_and_update.models.Status;
 import com.example.add_and_update.repositories.PatientRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +44,9 @@ public class PatientController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Patient createPatient(@RequestBody Patient patient){
+    public Patient createPatient(@RequestBody @Valid Patient patient){
         return patientRepository.save(patient);
+        //Preguntar a hector por que me pone admitted_by : null, SERA QUE HAY QUE PONERLO COMO EL CONSTRUCTOR?
+        // PERO AUN ASI NO ME LO TOMA
     }
 }

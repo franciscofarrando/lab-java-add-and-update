@@ -1,17 +1,25 @@
 package com.example.add_and_update.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "employee")
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "employee_id")
     private int employeeId;
+    @NotNull
+    @NotEmpty
     private String department;
+    @NotNull
+    @NotEmpty
     private String name;
+    //@NotNull
+    //@NotEmpty
+    // PREGUNTAR A HECTOR POR QUE NO ME TOMA ESTO? SERA POR EL ORDEN?
     @Enumerated(EnumType.STRING)
-
     private Status status;
 
     public Employee() {
@@ -23,11 +31,11 @@ public class Employee {
         this.status = status;
     }
 
-    public Integer getEmployeeId() {
+    public int getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(Integer employeeId) {
+    public void setEmployeeId(int employeeId) {
         this.employeeId = employeeId;
     }
 

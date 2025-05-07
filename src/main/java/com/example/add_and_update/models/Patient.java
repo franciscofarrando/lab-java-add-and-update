@@ -1,6 +1,8 @@
 package com.example.add_and_update.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "patient")
@@ -9,10 +11,14 @@ public class Patient {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Integer patientId;
+        @NotNull
+        @NotEmpty
         private String name;
+        @NotNull
+        @NotEmpty
         private String dateOfBirth;
         @ManyToOne
-        @JoinColumn(name = "admitted_by", referencedColumnName = "employeeId")
+        @JoinColumn(name = "admitted_by", referencedColumnName = "employee_id")
         private Employee admittedBy;
 
     public Patient() {
