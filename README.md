@@ -55,16 +55,29 @@ _Note that `admitted_by` is a foreign key to the employee table._
 Create the following routes as efficiently as possible, using validation where appropriate:
 
 1. **Add new patient**: Create a route to add a new patient.
+![ADD PATIENT.png](img/ADD%20PATIENT.png)
 2. **Add new doctor**: Create a route to add a new doctor.
+![ADD DOCTOR.png](img/ADD%20DOCTOR.png)
 3. **Change doctor status**: Create a route to change a doctor's status.
+![CHANGE STATUS.png](img/CHANGE%20STATUS.png)
 4. **Update doctor's department**: Create a route to update a doctor's department.
+![UPDATE DEPARTMENT.png](img/UPDATE%20DEPARTMENT.png)
 5. **Update patient information**: Create a route to update patient information (the user should be able to update any patient information through this route).
+![UPDATE PATIENT INFO.png](img/UPDATE%20PATIENT%20INFO.png)
 6. **Write a short answer in README.md**. In your `README.md`, write a short answer to the following questions:
 
    - Did you use the same type of route to update patient information as to update an employee's department?
+   - No
+   - 
    - Why did you choose the selected strategy?
+   - Use Patch en Employee, para cambiar solo las cosas que queria, y Put en Patient para cambiar toda al información.
+   - 
    - What are the advantages and disadvantages of the strategies you chose for creating these routes?
+   - La ventaja seria evitar errores graves de edición de la BD, la desventaja que con el PUT, si hay algo que no quiero cambiar, debo volver a escribirlo como el existente.
+   - 
    - What is the cost-benefit between using `PUT` and `PATCH`?
+   - Con put gano velocidad de modificación, con el riesgo de perder info.
+   - Con patch voy más lento, pero seguro que no modifico otras variables.
 
 <br>  
 

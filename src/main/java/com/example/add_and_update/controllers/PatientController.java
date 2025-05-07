@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -40,7 +41,7 @@ public class PatientController {
         return patientRepository.findByAdmittedBy_Status(status);
     }
 
-    // POST PUT & PATCH
+    // POST & PUT
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -49,4 +50,16 @@ public class PatientController {
         //Preguntar a Hector por que me pone admitted_by : null, SERA QUE HAY QUE PONERLO COMO EL CONSTRUCTOR?
         // PERO AUN ASI NO ME LO TOMA
     }
+    @PutMapping("/id/{patientId}")
+    @ResponseStatus(HttpStatus.OK)
+    public Patient updatePatient(@PathVariable int patientId, @RequestBody @Valid Patient patient ){
+        Patient existingPatient = patientRepository.findById(patientId).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        existingPatient.setName(patient.getName());
+        existingPatient.setDateOfBirth(patient.getDateOfBirth());
+        existingPatient.setAdmittedBy(patient.getAdmittedBy());
+
+        return patientRepository.save(existingPatient);
+    }
+
 }

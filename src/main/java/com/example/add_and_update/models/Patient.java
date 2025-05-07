@@ -10,7 +10,7 @@ public class Patient {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer patientId;
+        private int patientId;
         @NotNull
         @NotEmpty
         private String name;
@@ -30,11 +30,11 @@ public class Patient {
         this.admittedBy = admittedBy;
     }
 
-    public Integer getPatientId() {
+    public int getPatientId() {
         return patientId;
     }
 
-    public void setPatientId(Integer patientId) {
+    public void setPatientId(int patientId) {
         this.patientId = patientId;
     }
 
